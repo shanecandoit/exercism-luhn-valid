@@ -6,14 +6,6 @@ import (
 	"unicode"
 )
 
-// ReverseString reverse a given string
-func ReverseString(s string) (result string) {
-	for _, v := range s {
-		result = string(v) + result
-	}
-	return
-}
-
 // Valid is a card number valid?
 func Valid(card string) bool {
 	fmt.Print("Valid? ", card, "\t")
