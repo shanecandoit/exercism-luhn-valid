@@ -9,12 +9,11 @@ import (
 func Valid(card string) bool {
 
 	card = strings.ReplaceAll(card, " ", "")
-
-	count := len(card)
-	if count < 2 {
+	if len(card) < 2 {
 		return false
 	}
 
+	isSecond := len(card)%2 == 0
 	sum := 0
 	for _, ch := range card {
 
@@ -22,11 +21,9 @@ func Valid(card string) bool {
 			return false
 		}
 
-		n := int(ch) - int('0')
+		n := int(ch - '0')
 		// double every second digit
-		isSecond := count%2 == 0
 		if isSecond {
-
 			prod := 2 * n
 			if prod > 9 {
 				prod -= 9
@@ -34,7 +31,7 @@ func Valid(card string) bool {
 			n = prod
 		}
 		sum += n
-		count--
+		isSecond = !isSecond
 	}
 
 	return sum%10 == 0
