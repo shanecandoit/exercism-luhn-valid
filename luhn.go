@@ -24,11 +24,10 @@ func Valid(card string) bool {
 		n := int(ch - '0')
 		// double every second digit
 		if isSecond {
-			prod := 2 * n
-			if prod > 9 {
-				prod -= 9
+			n *= 2
+			if n > 9 {
+				n -= 9
 			}
-			n = prod
 		}
 		sum += n
 		isSecond = !isSecond
